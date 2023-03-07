@@ -1,0 +1,39 @@
+package io.jagdesh.CRUD_with_Testing.entity;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Entity
+@Table(name = "employees")
+public class Employee {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "employee_ID", nullable = false)
+    private Long employeeId;
+
+    @NotBlank(message = "Employee First Name is empty or Just whitespace in the input")
+    @Length(max = 25, min = 3, message = "Length of the Employee's First Name is not between range of 3 - 25")
+    @Column(name = "emp_first_name", nullable = false)
+    private String empFirstName;
+
+    @Column(name = "emp_last_name", nullable = true)
+    @Length(max = 25, min = 0, message = "Length of the Employee's Last Name range is not within 25")
+    private String empLastName;
+
+    @Column(name = "emp_address", nullable = false)
+    private String empAddress;
+
+    @Column(name = "emp_code", nullable = false)
+    private String empCode;
+
+}
