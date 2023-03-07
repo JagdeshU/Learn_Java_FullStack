@@ -9,13 +9,14 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      # create-drop action as fakerjava will persist the previous data in mysql
-      ddl-auto: create-drop
+      ddl-auto: update
     show-sql: true
 
 springdoc:
   swagger-ui:
     path: /swagger-ui
+    # url - http://localhost:8080/swagger-ui/index.html
   api-docs:
     enabled: true
     path: /api-docs
+    # url - http://localhost:8080/api-docs

@@ -18,7 +18,7 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
-//@RequestMapping("employees/api/v1")
+@RequestMapping("/operations/api/v1")
 public class EmployeeController {
 
     @Autowired
