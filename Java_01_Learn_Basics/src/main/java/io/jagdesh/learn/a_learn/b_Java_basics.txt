@@ -1,0 +1,106 @@
+-   Abstract
+    -   The abstract keyword is a non-access modifier, used for classes and methods.
+    -   Abstract class - is a restricted class that cannot be used to create objects.
+        -   to access it, it must be inherited from another class.
+    -   Abstract method - can only be used in an abstract class, and it does not have a body.
+    -   Abstract Class cannot be instantiated.
+    -   An abstract class must be declared with an abstract keyword.
+    -   Abstract Class can have final methods, constructors and static methods also.
+
+-   Static
+    -   The static keyword in Java is used for memory management mainly.
+    -   We can apply static keyword with variables, methods, blocks and nested classes.
+    -   The static keyword belongs to the class than an Object.
+    -   The static variable can be used to refer to the common property of all objects (which is not unique for each object),
+        for example, the company name of employees, college name of students, etc.
+    -   If you apply static keyword with any method, it is known as static method.
+
+-   Interface
+    -   It is a blueprint of a class. It has static constants and abstract methods.
+    -   It is a mechanism to achieve abstraction. There can be only abstract methods in the Java interface, not method body.
+    -   It is used to achieve abstraction and multiple inheritance in Java.
+    -   It cannot be instantiated just like the abstract class.
+    -   Since Java 8, we can have default and static methods in an interface.
+    -   Since Java 9, we can have private methods in an interface.
+    -   a class extends another class, an interface extends another interface, but a class implements an interface.
+
+-   Functional Interface
+    -   An Interface that contains exactly one abstract method is known as functional interface.
+    -   It's recommended that all functional interfaces have an informative @FunctionalInterface annotation.
+        -   This clearly communicates the purpose of the interface.
+    -   Any interface with a SAM(Single Abstract Method) is a functional interface.
+        -   And its implementation may be treated as lambda expressions.
+
+-   Enums
+    -   Enum in Java is a data type which contains a fixed set of constants.
+    -   Enum improves type safety.
+    -   Enum can have fields, constructors and methods.
+    -   Enum may implement many interfaces
+        -   but cannot extend any class because it internally extends Enum class
+
+-   Predicate Interface
+    -   It is a functional interface which represents a predicate (boolean-valued function) of one argument.
+    -   It is defined in the java.util.function package.
+
+-   Serialization & Deserialization
+    -   Serialization in Java is a mechanism of writing the state of an object into a byte-stream.
+        -   It is mainly used in Hibernate, JPA, and in ORM technologies.
+    -   The reverse operation of serialization is called deserialization where byte-stream is converted into an object.
+    -   The serialization and deserialization process is platform-independent,
+        it means you can serialize an object on one platform and deserialize it on a different platform.
+    -   We must have to implement the Serializable interface for serializing the object.
+    -   Serializable
+            -   Serializable is a marker interface (has no data member and method).
+            -   It is used to "mark" Java classes so that the objects of these classes may get a certain capability.
+            -   The Cloneable and Remote are also marker interfaces.
+            -   The Serializable interface must be implemented by the class whose object needs to be persisted.
+            -   If a class implements Serializable interface then all its sub classes will also be serializable.
+    -   For serializing the object, we call the writeObject() method of ObjectOutputStream class.
+        -   The ObjectOutputStream class is used to write primitive data types, and Java objects to an OutputStream.
+        -   Only objects that support the java.io.Serializable interface can be written to streams.
+    -   For deserialization we call the readObject() method of ObjectInputStream class.
+        -   An ObjectInputStream deserializes objects and primitive data written using an ObjectOutputStream.
+
+-   Java Bean
+    -   A JavaBean is a Java class that should follow the following conventions,
+        -   It should have a no-arg constructor.
+        -   It should be Serializable.
+        -   It should provide methods to set and get the values of the properties, known as getter and setter methods.
+        -   A bean encapsulates many objects into one object so that we can access this object from multiple places.
+        -   Moreover, it provides easy maintenance.
+        -   A JavaBean property
+            -   JavaBean property is a named feature that can be accessed by the user of the object.
+            -   JavaBean features are accessed through two methods in the JavaBean's implementation class,
+                -   getPropertyName ()
+                    -   if the property name is firstName, the method name would be getFirstName() to read that property.
+                    -   This method is called the accessor.
+                -   setPropertyName ()
+                    -   if the property name is firstName, the method name would be setFirstName() to write that property.
+                    -   This method is called the mutator.
+        -   The JavaBean properties and methods can be exposed to another application.
+        -   provides an easiness to reuse the software components.
+        -   JavaBeans are mutable. So, it can't take advantages of immutable objects.
+        -   Creating the setter and getter method for each property separately may lead to the boilerplate code.
+
+-   Regex
+    -   The Java Regex or Regular Expression is an API to define a pattern for searching or manipulating strings.
+    -   It is widely used to define the constraint on strings such as password and email validation.
+    -   Java Regex API provides 1 interface and 3 classes in java.util.regex package.
+        -   MatchResult interface
+        -   Matcher class
+        -   Pattern class
+        -   PatternSyntaxException class
+    -   MatchResult interface
+        -   It implements the MatchResult interface.
+        -   It is a regex engine which is used to perform match operations on a character sequence.
+    -   Pattern class
+        -   It is the compiled version of a regular expression.
+        -   It is used to define a pattern for the regex engine.
+
+-   Multithreading
+    -   Multithreading in Java is a process of executing multiple threads simultaneously.
+    -   A thread is a lightweight sub-process, the smallest unit of processing.
+        Multiprocessing and multithreading, both are used to achieve multitasking.
+
+
+

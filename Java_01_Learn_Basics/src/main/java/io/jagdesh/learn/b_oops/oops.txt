@@ -1,0 +1,84 @@
+Oops
+
+-	Inheritance
+	-	Inheritance in Java is a mechanism in which one object acquires all the properties and behaviors of a parent object.
+	-	When we inherit from an existing class, we can reuse methods and fields of the parent class. 
+	-	Moreover, we can add new methods and fields in the current class also.
+	-	Inheritance represents the IS-A relationship which is also known as a parent-child relationship.
+	-	Sub Class/Child Class
+		-	Subclass is a class which inherits the other class. It is also called a derived class, extended class, or child class.
+	-	Super Class/Parent Class
+		-	Superclass is the class from where a subclass inherits the features. It is also called a base class or a parent class.
+	-	The 'extends' keyword indicates that you are making a new class that derives from an existing class.
+	    -   The meaning of "extends" is to increase the functionality.
+	
+-	Polymorphism 
+	-	Polymorphism in Java is a concept by which we can perform a single action in different ways.
+	-	There are two types of polymorphism in Java: compile-time polymorphism and runtime polymorphism.
+	-	We can perform polymorphism in java by method overloading and method overriding.
+
+	-	Method Overloading,
+	    -   If a class has multiple methods having same name but different in parameters, it is known as Method Overloading.
+	    -   Suppose you have to perform addition of the given numbers but there can be any number of arguments,
+	        if you write the method such as a(int,int) for two parameters, and b(int,int,int) for three parameters
+	        then it may be difficult for you as well as other programmers to understand the behavior of the method
+	        because its name differs.
+            -   So, we perform method overloading to figure out the program quickly.
+        -   Method overloading increases the readability of the program.
+        -   There are two ways to overload the method in java
+            -   By changing number of arguments
+            -   By changing the data type
+
+    -   Method Overriding
+        -   If subclass (child class) has the same method as declared in the parent class, it is known as method overriding in Java.
+        -   In other words, If a subclass provides the specific implementation of the method
+            that has been declared by one of its parent class, it is known as method overriding.
+        -   Method overriding is used to provide the specific implementation of a method which is already provided by its superclass.
+        -   Method overriding is used for runtime polymorphism.
+        -   RULES,
+            -   The method must have the same name as in the parent class.
+            -   The method must have the same parameter as in the parent class.
+            -   There must be an Inheritance.
+
+    -    super
+        -   The super keyword in Java is a reference variable which is used to refer immediate parent class object.
+        -   Whenever you create the instance of subclass,
+            an instance of parent class is created implicitly which is referred by super reference variable.
+        -   super can be used to refer immediate parent class instance variable.
+        -   It can be used to invoke immediate parent class method.
+        -   super() can be used to invoke immediate parent class constructor.
+
+    -   final
+        -   The final keyword in java is used to restrict the user.
+        -   Final can be a variable, method, and class.
+        -   If you make any variable as final, you cannot change the value of final variable(It will be constant).
+        -   If you make any method as final, you cannot override it.
+        -   If you make any class as final, you cannot extend it.
+        -   final method is inherited, but you cannot override it.
+
+-   Abstraction
+    -   It is a process of hiding the implementation details and showing only functionality to the user.
+    -   Another way, it shows only essential things to the user and hides the internal details.
+    -   for example,
+        sending SMS where you type the text and send the message.
+        You don't know the internal processing about the message delivery.
+    -   Abstraction lets you focus on what the object does instead of how it does it.
+    -   There are two ways to achieve abstraction in java
+        -   Abstract class (0 to 100%)
+        -   Interface (100%
+
+-   Encapsulation
+    -   Encapsulation in Java is a process of wrapping code and data together into a single unit,
+    -   for example, a capsule which is mixed of several medicines.
+    -   We can create a fully encapsulated class in Java by making all the data members of the class private.
+    -   Now we can use setter and getter methods to set and get the data in it.
+    -   The Java Bean class is the example of a fully encapsulated class.
+    -   By providing only a setter or getter method, you can make the class read-only or write-only.
+        -   It provides you the control over the data.
+        -   Suppose you want to set the value of id which should be greater than 100 only,
+            you can write the logic inside the setter method.
+            You can write the logic not to store the negative numbers in the setter methods.
+        -   It is a way to achieve data hiding in Java because other class will not be able to access the data
+            through the private data members.
+        -   The encapsulated class is easy to test. So, it is better for unit testing.
+

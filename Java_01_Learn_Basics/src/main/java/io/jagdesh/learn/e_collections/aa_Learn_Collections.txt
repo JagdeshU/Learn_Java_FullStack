@@ -1,0 +1,174 @@
+A collections framework is a unified architecture for representing and manipulating collections,
+& it consists of Interfaces that provide essential support,
+
+    -   Collection Interfaces
+        -   Set
+        -   List
+        -   Map
+
+
+Collection Interface,
+    -   add() - It is used to insert an element in this collection.
+    -   addAll() - It is used to insert the specified collection elements in the invoking collection.
+    -   remove() - It is used to delete an element from the collection.
+    -   removeAll() - It is used to delete all the elements of the specified collection from the invoking collection.
+    -   removeIf() - It is used to delete all the elements of the collection that satisfy the specified predicate.
+    -   retainAll() - It is used to delete all the elements of invoking collection except the specified collection.
+    -   size() - It returns the total number of elements in the collection.
+    -   clear() - It removes the total number of elements from the collection.
+    -   contains() - It is used to search an element.
+    -   containsAll() - It is used to search the specified collection in the collection.
+    -   iterator() - It returns an iterator.
+    -   toArray() - It converts collection into array.
+    -   isEmpty() - It checks if collection is empty.
+    -   parallelStream() - It returns a possibly parallel Stream with the collection as its source.
+    -   stream() - It returns a sequential Stream with the collection as its source.
+    -   spliterator() - It generates a Spliterator over the specified elements in the collection.
+    -   equals() - It matches two collections.
+    -   hashCode() - It returns the hash code number of the collection.
+
+
+List Interface,
+    -   add(int index, E element) - It is used to insert the specified element at the specified position in a list.
+    -   add() - It is used to append the specified element at the end of a list.
+    -   addAll() - It is used to append all the elements in the specified collection to the end of a list.
+    -   clear() - It is used to remove all the elements from this list.
+    -   equals() - It is used to compare the specified object with the elements of a list.
+    -   hashcode() - It is used to return the hash code value for a list.
+    -   get() - It is used to fetch the element from the particular position of the list.
+    -   isEmpty() - It returns true if the list is empty, otherwise false.
+    -   lastIndexOf() - It is used to return the index in this list of the last occurrence of the specified element,
+   or -1 if the list does not contain this element.
+    -   toArray() - It is used to return an array containing all the elements in this list in the correct order.
+    -   contains() - It returns true if the list contains the specified element.
+    -   containsAll() - It returns true if the list contains all the specified element
+    -   indexOf() - It is used to return the index in this list of the first occurrence of the specified element,
+   or -1 if the List does not contain this element.
+    -   remove(int index) - It is used to remove the element present at the specified position in the list.
+    -   remove(Object o) - It is used to remove the first occurrence of the specified element.
+    -   removeAll() - It is used to remove all the elements from the list.
+    -   replaceAll() - It is used to replace all the elements from the list with the specified element.
+    -   retainAll() - It is used to retain all the elements in the list that are present in the specified collection.
+    -   set() - It is used to replace the specified element in the list, present at the specified position.
+    -   sort() - It is used to sort the elements of the list on the basis of specified comparator.
+    -   spliterator() - It is used to create spliterator over the elements in a list.
+    -   subList(int fromIndex, int toIndex) - It is used to fetch all the elements lies within the given range.
+    -   size() - It is used to return the number of elements present in the list.
+
+
+Set Interface,
+    -   add() - adds the specified element to the set.
+    -   addAll() - adds all the elements of the specified collection to the set.
+    -   iterator() - returns an iterator that can be used to access elements of the set sequentially.
+    -   remove() - removes the specified element from the set.
+    -   removeAll() - removes all the elements from the set that is present in another specified set.
+    -   retainAll() - retains all the elements in the set that are also present in another specified set.
+    -   clear() - removes all the elements from the set.
+    -   size() - returns the length (number of elements) of the set.
+    -   toArray() - returns an array containing all the elements of the set.
+    -   contains() - returns true if the set contains the specified element.
+    -   containsAll() - returns true if the set contains all the elements of the specified collection.
+    -   hashCode() - returns a hash code value (address of the element in the set).
+
+        -   Set Operations - perform basic mathematical set operations like union, intersection, and subset,
+            -   Union - to get the union of two sets x and y, we can use x.addAll(y)
+            -   Intersection - to get the intersection of two sets x and y, we can use x.retainAll(y)
+            -   Subset - to check if x is a subset of y, we can use y.containsAll(x)
+
+    -   SortedSet Interface
+        -   comparator() - Returns the comparator which is used to order the elements in the given set. Also returns
+       null if the given set uses the natural ordering of the element.
+        -   first() - Returns the first element from the current set.
+        -   headSet(E toElement) - Returns a view of the portion of the given set whose elements are strictly
+       less than the toElement.
+        -   last() - Returns the reverse order view of the mapping which present in the map.
+        -   spliterator() - Returns a key-value mapping which is associated with the least key in the given map.
+       Also, returns null if the map is empty.
+        -   subSet(E fromElement, E toElement) - Returns a key-value mapping which is associated with the greatest key
+       which is less than or equal to the given key. Also, returns null if the map is empty.
+        -   tailSet(E fromElement) - Returns a view of the map whose keys are strictly less than the toKey.
+
+
+Queue Interface,
+    -   collection for holding elements prior to processing. Besides basic Collection operations, queues provide
+    additional insertion, removal, and inspection operations.
+    -   These methods throw an exception if the operation fails,
+        -   add() - Inserts the specified element into the queue. If the task is successful, add() returns true,
+       if not it throws an exception.
+        -   element() - Returns the head of the queue. Throws an exception if the queue is empty.
+        -   remove() - Returns and removes the head of the queue. Throws an exception if the queue is empty.
+    -   These methods return a special value if the operation fails (either null or false, depending on the operation),
+        -   offer() - Inserts the specified element into the queue. If the task is successful, offer() returns true,
+       if not it returns false.
+        -   peek() - returns the head of the queue, but does not remove, or returns null if this queue is empty.
+        -   poll() - Returns and removes the head of the queue. Returns null if the queue is empty.
+
+
+Deque Interface,
+    -   The Deque interface of the Java collections framework provides the functionality of a double-ended queue.
+   It extends the Queue interface.
+    -   addFirst() - Adds the specified element at the beginning of the deque. Throws an exception if the deque is full.
+    -   addLast() - Adds the specified element at the end of the deque. Throws an exception if the deque is full.
+    -   offerFirst() - Adds the specified element at the beginning of the deque. Returns false if the deque is full.
+    -   offerLast() - Adds the specified element at the end of the deque. Returns false if the deque is full.
+    -   getFirst() - Returns the first element of the deque. Throws an exception if the deque is empty.
+    -   getLast() - Returns the last element of the deque. Throws an exception if the deque is empty.
+    -   peekFirst() - Returns the first element of the deque. Returns null if the deque is empty.
+    -   peekLast() - Returns the last element of the deque. Returns null if the deque is empty.
+    -   removeFirst() - Returns and removes the first element of the deque. Throws an exception if the deque is empty.
+    -   removeLast() - Returns and removes the last element of the deque. Throws an exception if the deque is empty.
+    -   pollFirst() - Returns and removes the first element of the deque. Returns null if the deque is empty.
+    -   pollLast() - Returns and removes the last element of the deque. Returns null if the deque is empty.
+
+
+Map Interface,
+    -   put(Object key, Object value) - It is used to insert an entry in the map.
+    -   putAll(Map map) - It is used to insert the specified map in the map.
+    -   putIfAbsent(K key, V value) - It inserts the specified value with the specified key in the map
+   only if it is not already specified.
+    -   remove(Object key) - It is used to delete an entry for the specified key.
+    -   remove(Object key, Object value) - It removes the specified values with the associated specified keys
+   from the map.
+    -   Set keySet() - It returns the Set view containing all the keys.
+    -   Set<Map.Entry<K,V>> entrySet() - It returns the Set view containing all the keys and values.
+    -   clear() - It is used to reset the map.
+    -   compute(K key, BiFunction<? super K,? super V,? extends V> remappingFunction)
+        -   It is used to compute a mapping for the specified key and its current mapped value
+            (or null if there is no current mapping).
+    -   computeIfAbsent(K key, Function<? super K,? extends V> mappingFunction)
+        -   It is used to compute its value using the given mapping function, if the specified key is not already
+            associated with a value (or is mapped to null), and enters it into this map unless null.
+    -   computeIfPresent(K key, BiFunction<? super K,? super V,? extends V> remappingFunction)
+        -   It is used to compute a new mapping given the key and its current mapped value if the value for the
+            specified key is present and non-null.
+    -   containsValue() - This method returns true if some value equal to the value exists within the map,
+   else return false.
+    -   containsKey() - This method returns true if some key equal to the key exists within the map, else return false.
+    -   equals() - It is used to compare the specified Object with the Map.
+    -   forEach() - It performs the given action for each entry in the map until all entries have been processed
+   or the action throws an exception.
+    -   get() - This method returns the object that contains the value associated with the key.
+    -   getOrDefault() - It returns the value to which the specified key is mapped, or defaultValue if the map
+   contains no mapping for the key.
+    -   hashCode() - It returns the hash code value for the Map
+    -   isEmpty() - This method returns true if the map is empty; returns false if it contains at least one key.
+    -   merge(K key, V value, BiFunction<? super V,? super V,? extends V> remappingFunction)
+        -   If the specified key is not already associated with a value or is associated with null,
+            associates it with the given non-null value.
+    -   replace(K key, V value) - It replaces the specified value for a specified key.
+    -   replace(K key, V oldValue, V newValue) - It replaces the old value with the new value for a specified key.
+    -   replaceAll() - It replaces each entry's value with the result of invoking the given function on that entry
+   until all entries have been processed or the function throws an exception.
+    -   Collection values() - It returns a collection view of the values contained in the map.
+    -   size() - This method returns the number of entries in the map.
+
+    -   SortedMap Interface,
+        -   The SortedMap interface of the Java collections framework provides sorting of keys stored in a map. It
+       extends the Map Interface.
+        -   comparator() - returns a comparator that can be used to order keys in a map.
+        -   firstKey() - returns the first key of the sorted map.
+        -   lastKey() - returns the last key of the sorted map.
+        -   headMap(key) - returns all the entries of a map whose keys are less than the specified key.
+        -   tailMap(key) - returns all the entries of a map whose keys are greater than or equal to the specified key.
+        -   subMap(key1, key2) - returns all the entries of a map whose keys lies in between key1 & key2 including key1.
+

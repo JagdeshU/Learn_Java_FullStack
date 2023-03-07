@@ -1,0 +1,82 @@
+-   Streams
+    -   It let us manipulate collections of data in a declarative way.
+    -   (i.e) It is used to process collections of objects.
+
+-   In Java Streams, the stream operations are divided into,
+    -   Intermediate -- Eg., Stream.filter(), Stream.map()
+    -   Terminal -- Eg., Stream.forEach(), Stream.reduce()
+
+-   anyMatch (terminal operation)
+    -   returns whether any elements of this stream match the provided predicate.
+
+-   allMatch (terminal operation)
+    -   when using this method all the elements must match the given predicate.
+
+-   nonMatch (terminal operation)
+    -   return true if no elements  are matched by the predicate, and false if one or more elements are matched.
+
+-   collect (terminal operation)
+    -   It starts the internal iteration of elements and collects the elements in the stream in a collection or
+        object of some kind.
+
+-   count (terminal operation)
+    -   It starts the internal iteration of the elements in the Stream and counts the elements.
+
+-   findAny (terminal operation)
+    -   this method can find a single element from the Stream.
+    -   the element found can be from anywhere in the Stream.
+    -   there is no guarantee about from where in the stream the element is taken.
+
+-   findFirst (terminal operation)
+    -   this method finds the first element in a stream, if any elements are in the stream.
+    -   it returns an Optional from which we can obtain the element if present
+
+-   forEach (terminal operation)
+    -   It starts the internal iteration of the elements in the Stream and applies a
+        Consumer (java.util.function.Consumer) to each element in the Stream.
+    -   this method returns void.
+
+-   min (terminal operation)
+    -   it returns the smallest element in the stream.
+
+-   max (terminal operation)
+    -   it returns the largest element in the stream.
+
+-   filter (intermediate operations)
+    -   used to filter out elements from the stream.
+    -   it takes a predicate that is called for each element in the stream.
+    -   If the element is to be included in the resulting Stream, the Predicate should return true.
+    -   If the element should not be included, the Predicate should return false.
+
+-   map (intermediate operations)
+    -   this method converts(maps) an element to another object.
+    -   For instance, if you had a list of strings it could convert each string to lowercase,
+        uppercase, or to a substring of the original string, or something completely else.
+
+-   flatMap (intermediate operations)
+    -   as the name suggests, is the combination of a Map and a Flat operation.
+    -   this means, we first apply the map function and then flatten the result.
+    -   To understand what flattening a stream consists in, consider a structure like [ [1,2,3],[4,5,6],[7,8,9] ],
+        which has "two levels". It's basically a big List containing three more List.
+        -   Flattening this means transforming it in a
+            "one level" structure e.g. [ 1,2,3,4,5,6,7,8,9 ] i.e. just one list.
+
+-   distinct (intermediate operations)
+    -   it returns a new stream that will only contain the distinct elements from the original stream.
+    -   Any duplicates will be eliminated.
+
+-   limit
+    -   this method can limit the number of elements in a stream to a number given to the limit() method as a parameter.
+    -   it returns a new stream that will at most contain the given number of elements.
+
+-   peek
+    -   it is actually like a Logger used for debugging purpose for the recent function output
+
+-   sorted
+    -   returns a stream consisting of the elements of this stream, sorted according to natural order.
+
+-   skip
+    -   method is used to skip the first 'n' elements from the given Stream.
+
+-   generate
+    -
