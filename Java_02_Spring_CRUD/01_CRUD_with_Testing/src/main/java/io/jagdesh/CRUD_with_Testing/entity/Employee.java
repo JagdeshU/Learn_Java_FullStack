@@ -1,5 +1,7 @@
 package io.jagdesh.CRUD_with_Testing.entity;
 
+import com.github.javafaker.Address;
+import com.github.javafaker.Code;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -22,7 +24,7 @@ public class Employee {
     private Long employeeId;
 
     @NotBlank(message = "Employee First Name is empty or Just whitespace in the input")
-    @Length(max = 25, min = 3, message = "Length of the Employee's First Name is not between range of 3 - 25")
+    @Length(max = 40, min = 3, message = "Length of the Employee's First Name is not between range of 3 - 40")
     @Column(name = "emp_first_name", nullable = false)
     private String empFirstName;
 
@@ -36,4 +38,10 @@ public class Employee {
     @Column(name = "emp_code", nullable = false)
     private String empCode;
 
+    public Employee(String firstName, String lastName, String fullAddress, String digit) {
+        this.empFirstName = firstName;
+        this.empLastName = lastName;
+        this.empAddress = fullAddress;
+        this.empCode = digit;
+    }
 }
