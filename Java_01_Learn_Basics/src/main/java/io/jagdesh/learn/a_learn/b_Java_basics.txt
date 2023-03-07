@@ -42,6 +42,22 @@
     -   It is a functional interface which represents a predicate (boolean-valued function) of one argument.
     -   It is defined in the java.util.function package.
 
+-    super
+    -   The super keyword in Java is a reference variable which is used to refer immediate parent class object.
+    -   Whenever you create the instance of subclass,
+        an instance of parent class is created implicitly which is referred by super reference variable.
+    -   super can be used to refer immediate parent class instance variable.
+    -   It can be used to invoke immediate parent class method.
+    -   super() can be used to invoke immediate parent class constructor.
+
+-   final
+    -   The final keyword in java is used to restrict the user.
+    -   Final can be a variable, method, and class.
+    -   If you make any variable as final, you cannot change the value of final variable(It will be constant).
+    -   If you make any method as final, you cannot override it.
+    -   If you make any class as final, you cannot extend it.
+    -   final method is inherited, but you cannot override it.
+
 -   Serialization & Deserialization
     -   Serialization in Java is a mechanism of writing the state of an object into a byte-stream.
         -   It is mainly used in Hibernate, JPA, and in ORM technologies.
@@ -101,6 +117,5 @@
     -   Multithreading in Java is a process of executing multiple threads simultaneously.
     -   A thread is a lightweight sub-process, the smallest unit of processing.
         Multiprocessing and multithreading, both are used to achieve multitasking.
-
 
 
