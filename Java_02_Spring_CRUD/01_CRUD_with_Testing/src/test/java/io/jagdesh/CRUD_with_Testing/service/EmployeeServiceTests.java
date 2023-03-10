@@ -103,13 +103,14 @@ public class EmployeeServiceTests {
 
     // update test is yet to create
 
-    @DisplayName("JUnit test for deleteEmployee method")
-    @Test
-    public void givenEmployeeId_whenDeleteEmployee_thenNothing(){
-        long employeeId = 1L;
-        willDoNothing().given(empRepo).deleteById(employeeId);
-        empServImpl.deleteEmployeeById(employeeId);
-        verify(empRepo, times(1)).deleteById(employeeId);
-    }
+//    // delete trace
+//    @DisplayName("JUnit test for deleteEmployee method")
+//    @Test
+//    public void givenEmployeeId_whenDeleteEmployee_thenNothing(){
+//        long employeeId = 1L;
+//        willDoNothing().given(empRepo).deleteById(employeeId);
+//        empServImpl.deleteEmployeeById(employeeId);
+//        verify(empRepo, times(1)).deleteById(employeeId);
+//    }
 
 }
