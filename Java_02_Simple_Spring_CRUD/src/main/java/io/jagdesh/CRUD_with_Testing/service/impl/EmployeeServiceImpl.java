@@ -25,7 +25,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee saveEmployee(Employee employee) {
         Optional<Employee> optionalEmployee = empRepo.findByEmail(employee.getEmail());
         if (optionalEmployee.isPresent()) {
-            throw new ResourceAlreadyExistsException("Employee", "email", employee.getEmail());
+            throw new ResourceAlreadyExistsException("Employee is already present");
         }
         Employee savedEmployee = this.empRepo.save(employee);
         return savedEmployee;
@@ -39,14 +39,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee getEmployeeById(Long id) {
         Employee employee = empRepo.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Employee", "id", id));
+                .orElseThrow(() -> new ResourceNotFoundException("Requested employee details is not present"));
         return employee;
     }
 
     @Override
     public Employee updateEmployee(Long employeeId, Employee employee) {
         Employee foundEmployee = empRepo.findById(employeeId)
-                .orElseThrow(() -> new ResourceNotFoundException("Employee", "id", employeeId));
+                .orElseThrow(() -> new ResourceNotFoundException("Requested employee details is not present"));
         foundEmployee.setFirstName(employee.getFirstName());
         foundEmployee.setLastName(employee.getLastName());
         foundEmployee.setEmail(employee.getEmail());
@@ -57,7 +57,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void deleteEmployeeById(Long id) {
         Employee foundEmployee = this.empRepo.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Employee", "id", id));
+                .orElseThrow(() -> new ResourceNotFoundException("Requested employee details is not present"));
         empRepo.deleteById(foundEmployee.getId());
     }
 

@@ -7,10 +7,9 @@ public class ResourceAlreadyExistsException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
 
-    private String resourceName;
-    private String fieldName;
-    private String fieldValue;
+    private String message;
 
-    public ResourceAlreadyExistsException(String employee, String email, String email1) {
+    public ResourceAlreadyExistsException(String message) {
+        this.message = message;
     }
 }

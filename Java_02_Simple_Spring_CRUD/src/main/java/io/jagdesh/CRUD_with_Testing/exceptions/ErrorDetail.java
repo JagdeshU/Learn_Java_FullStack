@@ -11,7 +11,11 @@ public class ErrorDetail {
     private String message;
     private String detail;
 
-    //  Constructor for GlobalExceptionHandler
-    public ErrorDetail(Date date, String message, String description) {}
+    //  Constructor for GlobalExceptionHandler, mapping response body for the exceptions
+    public ErrorDetail(Date date, String message, String description) {
+        this.timestamp = date;
+        this.message = message;
+        this.detail = description;
+    }
 
 }
