@@ -1,4 +1,4 @@
-package io.jagdesh.learn.e_collections.aa_List.aa_ArrayList;
+package io.jagdesh.learn.e_collections.ab_List.aa_ArrayList;
 
 import java.util.ArrayList;
 import java.util.List;
