@@ -17,12 +17,17 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     Employee findByJPQLFirstNameLastName(String firstName, String lastName);
 
     @Query("select e from Employee e where e.firstName = :fName and e.lastName = :lName")
-    Employee findByJPQLNamedParamsFirstNameLastName(@Param("fName")String firstName, @Param("lName")String lastName);
+    Employee findByJPQLNamedParamsFirstNameLastName(@Param("fName") String firstName,
+                                                    @Param("lName") String lastName);
 
-    @Query(value = "select * from employees e where e.first_name = ?1 and e.last_name = ?2", nativeQuery = true)
-    Employee findByNativeSQLFirstNameLastName(@Param("fName")String firstName, @Param("lName")String lastName);
+    @Query(value = "select * from employees e where e.first_name = ?1 and e.last_name = ?2",
+            nativeQuery = true)
+    Employee findByNativeSQLFirstNameLastName(@Param("fName") String firstName,
+                                              @Param("lName") String lastName);
 
-    @Query(value = "select * from employees e where e.first_name = :fName and e.last_name = :lName", nativeQuery = true)
-    Employee findByNativeSQLNamedParamsFirstNameLastName(@Param("fName")String firstName, @Param("lName")String lastName);
+    @Query(value = "select * from employees e where e.first_name = :fName and e.last_name = :lName",
+            nativeQuery = true)
+    Employee findByNativeSQLNamedParamsFirstNameLastName(@Param("fName") String firstName,
+                                                         @Param("lName") String lastName);
 
 }

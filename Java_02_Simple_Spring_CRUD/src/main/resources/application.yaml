@@ -5,7 +5,7 @@ spring:
   datasource:
     url: jdbc:h2:mem:emp
     username: sa
-    password: password
+    password:
     driver-class-name: org.h2.Driver
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
@@ -15,6 +15,7 @@ spring:
   h2:
     console:
       path: /h2-console
+      # url - http://localhost:8080/h2-console
       enabled: true
 
 springdoc:
