@@ -11,4 +11,6 @@ public class ResourceAlreadyExistsException extends RuntimeException {
     private String fieldName;
     private String fieldValue;
 
+    public ResourceAlreadyExistsException(String employee, String email, String email1) {
+    }
 }

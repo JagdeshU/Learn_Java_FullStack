@@ -41,4 +41,11 @@ public class Employee {
     @Email
     private String email;
 
+    //  Faker Java constructors
+    public Employee(String firstName, String lastName, String emailAddress) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = emailAddress;
+    }
+
 }

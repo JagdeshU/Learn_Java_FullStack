@@ -20,16 +20,14 @@ public class FakerDataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
         List<Employee> employee = IntStream.rangeClosed(1, 100)
                 .mapToObj(i -> new Employee(
                         faker.name().firstName(),
                         faker.name().lastName(),
-                        faker.address().fullAddress(),
-                        faker.number().digit()
+                        faker.internet().emailAddress()
                 )).collect(Collectors.toList());
 
         empRepo.saveAll(employee);
-
     }
+
 }
