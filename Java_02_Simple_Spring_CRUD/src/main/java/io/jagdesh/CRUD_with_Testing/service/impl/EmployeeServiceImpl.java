@@ -27,8 +27,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (optionalEmployee.isPresent()) {
             throw new ResourceAlreadyExistsException("Employee is already present");
         }
-        Employee savedEmployee = this.empRepo.save(employee);
-        return savedEmployee;
+        return empRepo.save(employee);
     }
 
     @Override
@@ -38,27 +37,30 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee getEmployeeById(Long id) {
-        Employee employee = empRepo.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Requested employee details is not present"));
-        return employee;
+        return empRepo.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Requested employee details is not present with this ID : " + id));
     }
 
     @Override
     public Employee updateEmployee(Long employeeId, Employee employee) {
-        Employee foundEmployee = empRepo.findById(employeeId)
-                .orElseThrow(() -> new ResourceNotFoundException("Requested employee details is not present"));
-        foundEmployee.setFirstName(employee.getFirstName());
-        foundEmployee.setLastName(employee.getLastName());
-        foundEmployee.setEmail(employee.getEmail());
-        Employee updatedEmployee = empRepo.save(foundEmployee);
-        return updatedEmployee;
+       return empRepo.findById(employeeId)
+                .map(e -> {
+                    e.setFirstName(employee.getFirstName());
+                    e.setLastName(employee.getLastName());
+                    e.setEmail(employee.getEmail());
+                    return empRepo.save(e);
+                })
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Requested employee details is not present with this ID : " + employeeId));
     }
 
     @Override
     public void deleteEmployeeById(Long id) {
-        Employee foundEmployee = this.empRepo.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Requested employee details is not present"));
-        empRepo.deleteById(foundEmployee.getId());
+        Employee foundEmployee = empRepo.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Requested employee details is not present with this ID : " + id));
+        empRepo.delete(foundEmployee);
     }
 
 }
