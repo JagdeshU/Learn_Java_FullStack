@@ -39,15 +39,15 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee getEmployeeById(Long id) {
-        Employee employee = empRepo.findById(id).orElseThrow( () ->
-                new ResourceNotFoundException("Employee","id",id));
+        Employee employee = empRepo.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Employee", "id", id));
         return employee;
     }
 
     @Override
     public Employee updateEmployee(Long employeeId, Employee employee) {
-        Employee foundEmployee = empRepo.findById(employeeId).orElseThrow( () ->
-                new ResourceNotFoundException("Employee","id",employeeId));
+        Employee foundEmployee = empRepo.findById(employeeId)
+                .orElseThrow(() -> new ResourceNotFoundException("Employee", "id", employeeId));
         foundEmployee.setFirstName(employee.getFirstName());
         foundEmployee.setLastName(employee.getLastName());
         foundEmployee.setEmail(employee.getEmail());
@@ -57,8 +57,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void deleteEmployeeById(Long id) {
-        Employee foundEmployee = this.empRepo.findById(id).orElseThrow( () ->
-                new ResourceNotFoundException("Employee","id",id));
+        Employee foundEmployee = this.empRepo.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Employee", "id", id));
         empRepo.deleteById(foundEmployee.getId());
     }
 
