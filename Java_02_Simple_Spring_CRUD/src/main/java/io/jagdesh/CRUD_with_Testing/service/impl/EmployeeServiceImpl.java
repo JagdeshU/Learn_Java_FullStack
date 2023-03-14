@@ -44,7 +44,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee updateEmployee(Long employeeId, Employee employee) {
-       return empRepo.findById(employeeId)
+        return empRepo.findById(employeeId)
                 .map(e -> {
                     e.setFirstName(employee.getFirstName());
                     e.setLastName(employee.getLastName());
