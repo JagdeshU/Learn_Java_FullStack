@@ -1,1 +1,17 @@
+server:
+  port: 8081
 
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/emp
+    username: root
+    password:
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
+    # url - http://localhost:8081/swagger-ui/index.html
+  api-docs:
+    enabled: true
+    path: /api-docs
+    # url - http://localhost:8081/api-docs
