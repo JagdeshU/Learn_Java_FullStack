@@ -3,7 +3,7 @@ package io.jagdesh.CRUD_with_Testing.service;
 import io.jagdesh.CRUD_with_Testing.entity.Employee;
 import io.jagdesh.CRUD_with_Testing.exceptions.ResourceAlreadyExistsException;
 import io.jagdesh.CRUD_with_Testing.exceptions.ResourceNotFoundException;
-import io.jagdesh.CRUD_with_Testing.repository.EmployeeRepository;
+import io.jagdesh.CRUD_with_Testing.repository.EmployeeJpaRepository;
 import io.jagdesh.CRUD_with_Testing.service.impl.EmployeeServiceImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,6 +14,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -32,7 +33,7 @@ import static org.mockito.Mockito.verify;
 public class EmployeeServiceTest {
 
     @Mock
-    private EmployeeRepository empRepo;
+    private EmployeeJpaRepository empRepo;
 
     @InjectMocks
     private EmployeeServiceImpl empServ;
@@ -41,7 +42,9 @@ public class EmployeeServiceTest {
 
     @BeforeEach
     public void setUp() {
-        employee = new Employee(1L,"Janani", "J", "janani.s@io.com");
+        LocalDateTime ldt = LocalDateTime.parse("2023-03-02T02:09:49.711");
+        employee = new Employee("Janani", "J", "jan@ni.com",
+                ldt);
     }
 
     @AfterEach
@@ -79,8 +82,12 @@ public class EmployeeServiceTest {
     @DisplayName("JUnit test for getAllEmployees operation")
     public void givenEmployeesList_whenGetAllEmployees_thenReturnEmployeesList() {
         // given - precondition or setup
-        Employee employee1 = new Employee("Dhandapani","Sudhakar","dhandapani.sudhakar@dtechideas.com");
-        Employee employee2 = new Employee("Kathirvel","Sudhakar","kathirvel.sudhakar@dtechideas.com");
+        LocalDateTime ldt1 = LocalDateTime.parse("2022-07-12T00:42:58.778");
+        LocalDateTime ldt2 = LocalDateTime.parse("2023-03-10T17:09:01.184");
+        Employee employee1 = new Employee("Dhandapani", "Sudhakar",
+                "dhandapani.sudhakar@dtechideas.com", ldt1);
+        Employee employee2 = new Employee("Kathirvel", "Sudhakar",
+                "kathirvel.sudhakar@dtechideas.com", ldt2);
         given(empRepo.findAll()).willReturn(List.of(employee1,employee2));
         // when - action or the behaviour
         List<Employee> employees = empServ.getAllEmployees();
@@ -105,12 +112,12 @@ public class EmployeeServiceTest {
     @DisplayName("JUnit test for getEmployeeById operation")
     public void givenEmployeeId_whenFindEmployeeById_thenReturnEmployee() {
         // given - precondition or setup
-        given(empRepo.findById(employee.getId())).willReturn(Optional.of(employee));
+        given(empRepo.findById(employee.getEmployee_ID())).willReturn(Optional.of(employee));
         // when - action or the behaviour
-        Employee foundEmployee = empServ.getEmployeeById(employee.getId());
+        Employee foundEmployee = empServ.getEmployeeById(employee.getEmployee_ID());
         // then - verify the output
         assertThat(foundEmployee).isNotNull();
-        assertThat(foundEmployee.getId()).isEqualTo(employee.getId());
+        assertThat(foundEmployee.getEmployee_ID()).isEqualTo(employee.getEmployee_ID());
     }
 
     @Test
@@ -120,7 +127,7 @@ public class EmployeeServiceTest {
         given(empRepo.findById(anyLong())).willReturn(Optional.ofNullable(null));
         // when - action or the behaviour
         assertThrows(ResourceNotFoundException.class, () -> {
-            empServ.getEmployeeById(employee.getId());
+            empServ.getEmployeeById(employee.getEmployee_ID());
         });
     }
 
@@ -128,11 +135,11 @@ public class EmployeeServiceTest {
     @DisplayName("JUnit test for updateEmployee operation")
     public void givenEmployee_whenUpdateEmployee_thenReturnEmployeeUpdated() {
         // given - precondition or setup
-        given(empRepo.findById(employee.getId())).willReturn(Optional.of(employee));
+        given(empRepo.findById(employee.getEmployee_ID())).willReturn(Optional.of(employee));
         employee.setEmail("meenakshi.r@dtechideas.com");
         given(empRepo.save(employee)).willReturn(employee);
         // when - action or the behaviour
-        Employee updatedEmployee = empServ.updateEmployee(employee.getId(),employee);
+        Employee updatedEmployee = empServ.updateEmployee(employee.getEmployee_ID(),employee);
         // then - verify the output
         assertThat(updatedEmployee).isNotNull();
         assertThat(updatedEmployee.getEmail()).isEqualTo(employee.getEmail());
@@ -142,12 +149,12 @@ public class EmployeeServiceTest {
     @DisplayName("JUnit test for deleteEmployeeById operation")
     public void givenEmployeeId_whenDeleteEmployeeById_thenReturnTrue() {
         // given - precondition or setup
-        given(empRepo.findById(employee.getId())).willReturn(Optional.of(employee));
-        willDoNothing().given(empRepo).deleteById(employee.getId());
+        given(empRepo.findById(employee.getEmployee_ID())).willReturn(Optional.of(employee));
+        willDoNothing().given(empRepo).deleteById(employee.getEmployee_ID());
         // when - action or the behaviour
-        empServ.deleteEmployeeById(employee.getId());
+        empServ.deleteEmployeeById(employee.getEmployee_ID());
         // then - verify the output
-        verify(empRepo,times(1)).deleteById(employee.getId());
+        verify(empRepo,times(1)).deleteById(employee.getEmployee_ID());
     }
 
 }

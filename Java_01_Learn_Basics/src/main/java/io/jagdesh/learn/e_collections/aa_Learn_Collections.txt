@@ -175,6 +175,20 @@ Methods of LinkedList,
     -   int size() - It is used to return the number of elements in a list.
 
 Set Interface,
+    -   An unordered collection or list in which duplicates are not allowed.
+    -   The set interface is used to create the mathematical set.
+    -   The set interface use collection interface's methods to avoid the insertion of the same elements.
+    -   SortedSet and NavigableSet are two interfaces that extend the set implementation.
+    -   The set is an interface available in the java.util package, and it extends the Collection interface.
+    -   Classes that implement Set,
+        -   Since Set is an interface, we cannot create objects from it.
+        -   In order to use functionalities of the Set interface, we can use these classes:
+            -   HashSet
+            -   LinkedHashSet
+            -   EnumSet
+            -   TreeSet
+
+Methods of Set Interface,
     -   add() - adds the specified element to the set.
     -   addAll() - adds all the elements of the specified collection to the set.
     -   iterator() - returns an iterator that can be used to access elements of the set sequentially.
@@ -240,6 +254,17 @@ Deque Interface,
 
 
 Map Interface,
+    -   A map contains values on the basis of key, i.e. key and value pair.
+    -   Each key and value pair is known as an entry.
+    -   A Map contains unique keys.
+    -   There are two interfaces for implementing Map in java: Map and SortedMap,
+   and three classes: HashMap, LinkedHashMap, and TreeMap.
+    -   The Map interface maintains 3 different sets:
+        -   the set of keys
+        -   the set of values
+        -   the set of key/value associations (mapping).
+
+Map Interface Methods,
     -   put(Object key, Object value) - It is used to insert an entry in the map.
     -   putAll(Map map) - It is used to insert the specified map in the map.
     -   putIfAbsent(K key, V value) - It inserts the specified value with the specified key in the map

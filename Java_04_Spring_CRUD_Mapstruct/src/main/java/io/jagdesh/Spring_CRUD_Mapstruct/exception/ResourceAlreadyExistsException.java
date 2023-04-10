@@ -1,4 +1,4 @@
-package io.jagdesh.CRUD_with_Testing.exceptions;
+package io.jagdesh.Spring_CRUD_Mapstruct.exception;
 
 import lombok.Data;
 

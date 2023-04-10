@@ -1,0 +1,28 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:mapcrud
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  h2:
+    console:
+      path: /h2-console
+      # url - http://localhost:8082/h2-console
+      enabled: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
+    # url - http://localhost:8082/swagger-ui/index.html
+  api-docs:
+    enabled: true
+    path: /api-docs
+    # url - http://localhost:8082/api-docs

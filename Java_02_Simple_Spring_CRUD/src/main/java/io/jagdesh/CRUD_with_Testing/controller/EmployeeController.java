@@ -1,5 +1,6 @@
 package io.jagdesh.CRUD_with_Testing.controller;
 
+import io.jagdesh.CRUD_with_Testing.api.EmployeeApi;
 import io.jagdesh.CRUD_with_Testing.entity.Employee;
 import io.jagdesh.CRUD_with_Testing.service.EmployeeService;
 
@@ -13,66 +14,38 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/v1/employees")
-public class EmployeeController {
+public class EmployeeController implements EmployeeApi {
 
     @Autowired
     private EmployeeService employeeService;
 
     private final Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 
-    @Operation(summary = "Add an Employee")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Employee being added successfully.")
-    })
-    @PostMapping
     public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee) {
         Employee savedEmployee = employeeService.saveEmployee(employee);
         logger.info("Inside Save an Employee from the EmployeeController");
         return new ResponseEntity<Employee>(savedEmployee, HttpStatus.CREATED);
     }
 
-    @Operation(summary = "Fetch all employees")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "All Employees being fetched."),
-            @ApiResponse(responseCode = "204", description = "Employees List is Empty.")
-    })
-    @GetMapping
     public ResponseEntity<List<Employee>> getAllEmployees() {
         List<Employee> employees = employeeService.getAllEmployees();
             logger.info("Fetching the list of all employees.");
             return new ResponseEntity<List<Employee>>(employees, HttpStatus.OK);
     }
 
-    @Operation(summary = "Fetch an Employee by an ID")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Specific Employee being fetched"),
-            @ApiResponse(responseCode = "404", description = "Specific Employee is not available")
-    })
-    @GetMapping(path = "/{id}")
     public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") Long employeeId) {
         Employee foundEmployee = employeeService.getEmployeeById(employeeId);
         logger.info("Inside Get an Employee by an ID from the EmployeeController");
         return new ResponseEntity<Employee>(foundEmployee, HttpStatus.OK);
     }
 
-    @Operation(summary = "Update an Employee by an ID")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Specific Employee being Updated")
-    })
-    @PutMapping("/{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable("id") Long employeeId,
                                                    @RequestBody Employee employee) {
         Employee updatedEmployee = employeeService.updateEmployee(employeeId, employee);
@@ -80,16 +53,27 @@ public class EmployeeController {
         return new ResponseEntity<Employee>(updatedEmployee, HttpStatus.OK);
     }
 
-    @Operation(summary = "Delete an Employee")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Employee Deleted")
-    })
-    @DeleteMapping(path = "/{id}")
     public ResponseEntity<String> deleteEmployeeById(@PathVariable("id") Long employeeId) {
         employeeService.deleteEmployeeById(employeeId);
         logger.info("Deleted an Employee with ID : " + employeeId);
         return new ResponseEntity<String>("Employee with Id : " + employeeId + " deleted successfully",
                 HttpStatus.OK);
+    }
+
+    public List<Employee> getEmployeesBasedOnJoiningDateRangesJPA(
+            @RequestParam("startDate") LocalDateTime startDateStr,
+            @RequestParam("endDate") LocalDateTime endDateStr
+    ) {
+        List<Employee> foundEmployee = employeeService.getEmployeeBasedOnJoinedDateRanges(startDateStr, endDateStr);
+        return foundEmployee;
+    }
+
+    public List<Employee> getEmployeesBasedOnJoiningDateRangesJDBC(
+            @RequestParam("startDate") LocalDateTime startDate,
+            @RequestParam("endDate") LocalDateTime endDate
+    ) {
+        List<Employee> emp = employeeService.getEmployeeBasedOnJoinedDateRangesJDBC(startDate, endDate);
+        return emp;
     }
 
 }

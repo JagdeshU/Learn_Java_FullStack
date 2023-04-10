@@ -16,6 +16,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -26,26 +28,29 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "employee_ID", nullable = false)
-    private Long id;
+    @Column(nullable = false)
+    private Long employee_ID;
 
     @NotBlank(message = "Employee First Name is empty or Just whitespace in the input")
     @Length(max = 40, min = 3, message = "Length of the Employee's First Name is not between range of 3 - 40")
-    @Column(name = "emp_first_name", nullable = false)
-    private String firstName;
-    @Column(name = "emp_last_name", nullable = true)
+    @Column(nullable = false)
+    private String first_Name;
+    @Column(nullable = true)
     @Length(max = 25, min = 0, message = "Length of the Employee's Last Name range is not within 25")
-    private String lastName;
+    private String last_Name;
 
     @Column(name = "email", nullable = false)
     @Email
     private String email;
 
+    private LocalDateTime joined_Date;
+
     //  Faker Java constructors
-    public Employee(String firstName, String lastName, String emailAddress) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Employee(String firstName, String lastName, String emailAddress, LocalDateTime date) {
+        this.first_Name = firstName;
+        this.last_Name = lastName;
         this.email = emailAddress;
+        this.joined_Date = date;
     }
 
 }

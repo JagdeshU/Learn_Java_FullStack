@@ -3,22 +3,26 @@ package io.jagdesh.CRUD_with_Testing.service.impl;
 import io.jagdesh.CRUD_with_Testing.entity.Employee;
 import io.jagdesh.CRUD_with_Testing.exceptions.ResourceAlreadyExistsException;
 import io.jagdesh.CRUD_with_Testing.exceptions.ResourceNotFoundException;
-import io.jagdesh.CRUD_with_Testing.repository.EmployeeRepository;
+import io.jagdesh.CRUD_with_Testing.repository.EmployeeJpaRepository;
+import io.jagdesh.CRUD_with_Testing.repository.EmployeeJdbcRepository;
 import io.jagdesh.CRUD_with_Testing.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-    private EmployeeRepository empRepo;
+    private EmployeeJpaRepository empRepo;
+    private EmployeeJdbcRepository jdbcRepo;
 
     @Autowired
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
+    public EmployeeServiceImpl(EmployeeJpaRepository employeeRepository, EmployeeJdbcRepository jdbcRepository) {
         this.empRepo = employeeRepository;
+        this.jdbcRepo = jdbcRepository;
     }
 
     @Override
@@ -46,9 +50,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee updateEmployee(Long employeeId, Employee employee) {
         return empRepo.findById(employeeId)
                 .map(e -> {
-                    e.setFirstName(employee.getFirstName());
-                    e.setLastName(employee.getLastName());
+                    e.setFirst_Name(employee.getFirst_Name());
+                    e.setLast_Name(employee.getLast_Name());
                     e.setEmail(employee.getEmail());
+                    e.setJoined_Date(employee.getJoined_Date());
                     return empRepo.save(e);
                 })
                 .orElseThrow(() -> new ResourceNotFoundException(
@@ -62,5 +67,16 @@ public class EmployeeServiceImpl implements EmployeeService {
                         "Requested employee details is not present with this ID : " + id));
         empRepo.delete(foundEmployee);
     }
+
+    @Override
+    public List<Employee> getEmployeeBasedOnJoinedDateRanges(LocalDateTime startDate, LocalDateTime endDate) {
+        return empRepo.getEmployeeBasedOnJoinedDateRangesInJPA(startDate, endDate);
+    }
+
+    @Override
+    public List<Employee> getEmployeeBasedOnJoinedDateRangesJDBC(LocalDateTime startDate, LocalDateTime endDate) {
+        return jdbcRepo.getEmployeeBasedOnJoinedDateRangesInJDBC(startDate, endDate);
+    }
+
 
 }
