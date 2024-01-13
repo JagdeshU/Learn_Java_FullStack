@@ -16,8 +16,10 @@ public class ae_Remove_ElementsFromArrayList {
         fruits.remove(4);
         System.out.println("\n" + "After removing 5th index : " + fruits);
 
-        boolean isRemoveed = fruits.remove("Mango");
+        fruits.remove("Mango");
+        boolean isRemoved = !fruits.contains("Mango");
         System.out.println("\n" + "After Remove (\"Mango\") : " + fruits);
+        System.out.println("\n" + "Mango value is removed : " + isRemoved);
 
         List<String> subfruitsList = new ArrayList<>();
         subfruitsList.add("Ananas");
